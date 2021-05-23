@@ -8,9 +8,9 @@
     <section class="bg-color">
         <% patients.forEach( (element) => { %>
             <div class="bubble-nurses">
-                <p> <%= element.name %>  </p>
+                <a href="patients/<%=element.id%>">Ver más</a>
+                <p> <%=  element.name %> </p>
                 <p> <%= element.age %> </p>
-                <p> <%= element.specialty %> </p>
             </div> 
         <% }) %> 
     </section>

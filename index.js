@@ -22,7 +22,6 @@ app.set('view engine', 'ejs');
 
 // Retreving info
 
-
 // REST APIS
 app.get("/", function(req, res) {
     res.render('index')
@@ -42,4 +41,16 @@ app.get("/patients", function(req, res) {
         patients: data
       })
   });
+});
+
+app.get("/patients/:id", function(req, res) {
+  Patients.findById(req.params.id)
+  .then((result) => {
+    res.render('show_patient', {
+      patient: result
+    })
+  })
+  .catch(() => {
+    res.status(404).json({ error: 'Patient not found' })
+  })
 });
