@@ -54,3 +54,12 @@ app.get("/patients/:id", function(req, res) {
     res.status(404).json({ error: 'Patient not found' })
   })
 });
+
+app.get("/nurses/:id", function(req, res) {
+  Nurses.findById(req.params.id)
+  .then((result)=>{
+    res.render('show_nurse', {
+      nurse: result
+    })
+  })
+});
