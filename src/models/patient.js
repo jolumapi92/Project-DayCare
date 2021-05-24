@@ -13,6 +13,9 @@ const PatientSchema = new mongoose.Schema({
         required: true
     },
     tank: Object
+  }, {
+    versionKey: false,
+    timestamps: true
   })
 const Patient = mongoose.model('Patient', PatientSchema)
 

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('./head/head');  %> 
+    </head>
+    <body id="body-index">
+    <%- include('./body/navigation');  %>
+    <section class="bg-color">
+        <form action="patients.new" method="post">
+            <input type="text" name="name">
+            <input type="number" name="age">
+            <input type="submit", value="Submit">
+        </form>
+    <%- include('./body/javascript');  %>
+    </body>
+</html>

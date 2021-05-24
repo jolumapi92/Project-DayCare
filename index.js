@@ -22,44 +22,13 @@ app.set('view engine', 'ejs');
 
 // Retreving info
 
-// REST APIS
+// REST APIS Routers
 app.get("/", function(req, res) {
     res.render('index')
 });
 
-app.get("/nurses", function(req, res) {
-  Nurses.find({}, function(err, data) {
-      res.render('index_nurses', { 
-        nurses: data
-      })
-  });
-});
+const patientRouters = require('./app/routes/patient')
+app.use(patientRouters)
 
-app.get("/patients", function(req, res) {
-  Patients.find({}, function(err, data) {
-      res.render('index_patients', { 
-        patients: data
-      })
-  });
-});
-
-app.get("/patients/:id", function(req, res) {
-  Patients.findById(req.params.id)
-  .then((result) => {
-    res.render('show_patient', {
-      patient: result
-    })
-  })
-  .catch(() => {
-    res.status(404).json({ error: 'Patient not found' })
-  })
-});
-
-app.get("/nurses/:id", function(req, res) {
-  Nurses.findById(req.params.id)
-  .then((result)=>{
-    res.render('show_nurse', {
-      nurse: result
-    })
-  })
-});
+const nurseRouters = require('./app/routes/nurse')
+app.use(nurseRouters)
