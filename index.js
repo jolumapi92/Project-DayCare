@@ -2,11 +2,12 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require("path");
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express()
 const port = process.env.PORT || 5000
 
-mongoose.connect('mongodb+srv://jolumapi92:foamyFOAMY@cluster0.ukcjm.mongodb.net/Care?retryWrites=true&w=majority',
+mongoose.connect(process.env.DATABASE,
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
