@@ -7,6 +7,8 @@ require('dotenv').config();
 const app = express()
 const port = process.env.PORT || 5000
 
+// Connection to a database /////////////////////////////
+
 mongoose.connect(process.env.DATABASE,
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
@@ -18,6 +20,8 @@ db.on('error', (err) => {
 db.once('open', () => {
   console.log('Connection successful')
 })
+
+// Established connection /////////////////////////////////////
 
 const Nurses = require('./src/models/nurse');
 const Patients = require('./src/models/patient')
