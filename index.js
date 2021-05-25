@@ -5,6 +5,18 @@ const path = require("path");
 const app = express()
 const port = process.env.PORT || 5000
 
+mongoose.connect('mongodb+srv://jolumapi92:foamyFOAMY@cluster0.ukcjm.mongodb.net/Care?retryWrites=true&w=majority',
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
+
+const db = mongoose.connection;
+db.on('error', (err) => {
+  console.log('Error connecting to database', err)
+})
+db.once('open', () => {
+  console.log('Connection successful')
+})
+
 const Nurses = require('./src/models/nurse');
 const Patients = require('./src/models/patient')
 
