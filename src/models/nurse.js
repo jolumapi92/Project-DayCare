@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://jolumapi92:foamyFOAMY@cluster0.ukcjm.mongodb.net/Care?retryWrites=true&w=majority',
-  { useNewUrlParser: true, useUnifiedTopology: true }
-);
+
 
 const NurseSchema = new mongoose.Schema({
     name: { 
