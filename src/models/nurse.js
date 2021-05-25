@@ -14,7 +14,6 @@ const NurseSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    patients: [],
     tank: Object
   })
 const Nurse = mongoose.model('Nurse', NurseSchema)
