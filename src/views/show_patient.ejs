@@ -7,6 +7,22 @@
     <%- include('./body/navigation');  %>
     <section class="bg-color">
         <%= patient.name  %> 
+        <a class="delete btn btn-secondary" data-doc="<%=patient._id%> " >delete</a>
     <%- include('./body/javascript');  %>
+    
+    <script>
+        const trashcan = document.querySelector('a.delete');
+        
+        trashcan.addEventListener('click', (e) => {
+            const endpoint = `/patients/${trashcan.dataset.doc}`;
+
+            fetch(endpoint, {
+                method: 'DELETE'
+            })
+            .then((response) => response.json() )
+            .then((data)=> window.location.href = data.redirect)
+            .catch(err => console.log(err)); 
+        })
+    </script>
     </body>
 </html>

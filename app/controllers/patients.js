@@ -55,12 +55,10 @@ exports.updateSingle = (req, res) => {
 
 exports.deleteSingle = (req, res) => {
   const id = req.params.id
-    Patients.deleteOne(
-      { _id: parseId(req.params.id) },
-      (err, docs) => {
-        res.send({
-          items: docs
-        })
-      }
-  )
+  
+  Patients.findByIdAndDelete(id)
+  .then((result)=> {
+    res.json({ redirect: '/patients' })
+  })
+  .catch((error)=>{ console.log(error) });
 }
